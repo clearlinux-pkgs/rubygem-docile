@@ -4,7 +4,7 @@
 #
 Name     : rubygem-docile
 Version  : 1.1.5
-Release  : 5
+Release  : 6
 URL      : https://rubygems.org/downloads/docile-1.1.5.gem
 Source0  : https://rubygems.org/downloads/docile-1.1.5.gem
 Summary  : No detailed summary available
@@ -12,6 +12,8 @@ Group    : Development/Tools
 License  : MIT
 BuildRequires : ruby
 BuildRequires : rubygem-coveralls
+BuildRequires : rubygem-devise
+BuildRequires : rubygem-diff-lcs
 BuildRequires : rubygem-github-markup
 BuildRequires : rubygem-rake
 BuildRequires : rubygem-rdoc
@@ -19,6 +21,7 @@ BuildRequires : rubygem-redcarpet
 BuildRequires : rubygem-rspec
 BuildRequires : rubygem-rspec-core
 BuildRequires : rubygem-rspec-expectations
+BuildRequires : rubygem-rspec-mocks
 BuildRequires : rubygem-rspec-support
 BuildRequires : rubygem-rubygems-tasks
 BuildRequires : rubygem-yard
@@ -65,46 +68,31 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
 pushd %{buildroot}%{gem_dir}/gems/docile-1.1.5
-rspec spec/ || :
+rspec -I.:lib spec/ || :
 popd
 
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/ruby/gems/2.2.0/cache/docile-1.1.5.gem
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/ChainingFallbackContextProxy/cdesc-ChainingFallbackContextProxy.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/ChainingFallbackContextProxy/method_missing-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/Execution/cdesc-Execution.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/Execution/exec_in_proxy_context-c.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/Execution/exec_in_proxy_context-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/FallbackContextProxy/cdesc-FallbackContextProxy.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/FallbackContextProxy/instance_variables-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/FallbackContextProxy/method_missing-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/FallbackContextProxy/new-c.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/cdesc-Docile.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/dsl_eval-c.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/dsl_eval-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/dsl_eval_immutable-c.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/Docile/dsl_eval_immutable-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/docile-1.1.5/ri/cache.ri
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/.gitignore
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/.rspec
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/.ruby-gemset
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/.ruby-version
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/.travis.yml
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/.yardopts
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/Gemfile
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/HISTORY.md
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/LICENSE
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/README.md
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/Rakefile
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/docile.gemspec
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/lib/docile.rb
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/lib/docile/chaining_fallback_context_proxy.rb
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/lib/docile/execution.rb
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/lib/docile/fallback_context_proxy.rb
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/lib/docile/version.rb
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/on_what.rb
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/spec/docile_spec.rb
-/usr/lib64/ruby/gems/2.2.0/gems/docile-1.1.5/spec/spec_helper.rb
-/usr/lib64/ruby/gems/2.2.0/specifications/docile-1.1.5.gemspec
+/usr/lib64/ruby/gems/2.3.0/cache/docile-1.1.5.gem
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/.gitignore
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/.rspec
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/.ruby-gemset
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/.ruby-version
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/.travis.yml
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/.yardopts
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/Gemfile
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/HISTORY.md
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/LICENSE
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/README.md
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/Rakefile
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/docile.gemspec
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/lib/docile.rb
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/lib/docile/chaining_fallback_context_proxy.rb
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/lib/docile/execution.rb
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/lib/docile/fallback_context_proxy.rb
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/lib/docile/version.rb
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/on_what.rb
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/spec/docile_spec.rb
+/usr/lib64/ruby/gems/2.3.0/gems/docile-1.1.5/spec/spec_helper.rb
+/usr/lib64/ruby/gems/2.3.0/specifications/docile-1.1.5.gemspec
